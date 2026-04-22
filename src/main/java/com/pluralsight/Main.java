@@ -7,28 +7,25 @@ import java.util.TimeZone;
 public class Main {
     public static void main(String[] args) {
         DateTimeFormatter formatter, anotherFormatter;
-        LocalDate date = LocalDate.now();
-        LocalTime time = LocalTime.now();
         LocalDateTime today = LocalDateTime.now();
-        ZonedDateTime GMTNow = ZonedDateTime.now(ZoneId.of("GMT"));
-        TimeZone timeZone = TimeZone.getTimeZone("US/Eastern");
 
         formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        anotherFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = today.format(formatter);
 
-        String formattedDate = date.format(formatter);
-        String anotherFormattedDate = date.format(anotherFormatter);
 
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("EEEE dd, yyyy");
-        String fmtFormatted = today.format(fmt);
 
-        DateTimeFormatter gmt = DateTimeFormatter.ofPattern("EEEE MM dd, yyyy HH:mm");
-        String GMTFormatted = GMTNow.format(gmt);
+        DateTimeFormatter gmt = DateTimeFormatter.ofPattern("EEEE MMM dd, yyyy");
+        DateTimeFormatter gmtTimeFormat = DateTimeFormatter.ofPattern("HH:ss");
+        String GMTFormatted = today.format(gmt);
+        LocalDateTime GMTZone = today.plusHours(5);
+        String GMTTimeFormat = GMTZone.format(gmtTimeFormat);
+
 
         System.out.println("Formatted date: " + formattedDate);
-        System.out.println("Another Formatted date: " + anotherFormattedDate);
-        System.out.println("Date and Time in my timezone: "  + " " + fmtFormatted);
-        System.out.println("Date and Time (GMT): " + GMTFormatted);
-        System.out.println(time.getHour() + ":" + time.getMinute() + " on " + date.getMonthValue() + "-" + date.getDayOfMonth() + "-" + date.getYear());
+        System.out.println("Another Formatted date: " + today.format(fmt));
+        System.out.println("Date and Time (GMT): "  + " " + GMTFormatted + " " + GMTTimeFormat);
+        System.out.println("Date and Time(EST): " + today.getHour() + ":" + today.getMinute() + " on " + today.getMonthValue() + "-" + today.getDayOfMonth() + "-" + today.getYear());
+
     }
 }
