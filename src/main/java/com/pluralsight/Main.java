@@ -19,18 +19,16 @@ public class Main {
         String formattedDate = date.format(formatter);
         String anotherFormattedDate = date.format(anotherFormatter);
 
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd, yyyy");
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("EEEE dd, yyyy");
         String fmtFormatted = today.format(fmt);
 
-        DateTimeFormatter gmt = DateTimeFormatter.ofPattern("MM dd, yyyy HH:mm");
+        DateTimeFormatter gmt = DateTimeFormatter.ofPattern("EEEE MM dd, yyyy HH:mm");
         String GMTFormatted = GMTNow.format(gmt);
 
         System.out.println("Formatted date: " + formattedDate);
         System.out.println("Another Formatted date: " + anotherFormattedDate);
-        System.out.println("Date and Time in my timezone: " + date.getDayOfWeek() + " " + fmtFormatted);
-        System.out.println("Date and Time (GMT): " + today.getDayOfWeek() + ", " + GMTFormatted);
+        System.out.println("Date and Time in my timezone: "  + " " + fmtFormatted);
+        System.out.println("Date and Time (GMT): " + GMTFormatted);
         System.out.println(time.getHour() + ":" + time.getMinute() + " on " + date.getMonthValue() + "-" + date.getDayOfMonth() + "-" + date.getYear());
     }
-
-
 }
