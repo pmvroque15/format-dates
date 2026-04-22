@@ -1,6 +1,7 @@
 package com.pluralsight;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.TimeZone;
 
 
 public class Main {
@@ -10,6 +11,7 @@ public class Main {
         LocalTime time = LocalTime.now();
         LocalDateTime today = LocalDateTime.now();
         ZonedDateTime GMTNow = ZonedDateTime.now(ZoneId.of("GMT"));
+        TimeZone timeZone = TimeZone.getTimeZone("US/Eastern");
 
         formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         anotherFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -27,5 +29,8 @@ public class Main {
         System.out.println("Another Formatted date: " + anotherFormattedDate);
         System.out.println("Date and Time in my timezone: " + date.getDayOfWeek() + " " + fmtFormatted);
         System.out.println("Date and Time (GMT): " + today.getDayOfWeek() + ", " + GMTFormatted);
+        System.out.println(time.getHour() + ":" + time.getMinute() + " on " + date.getMonthValue() + "-" + date.getDayOfMonth() + "-" + date.getYear());
     }
+
+
 }
